@@ -11,7 +11,7 @@ import { useCurrentPatient } from "@openmrs/esm-api";
 import { Trans, useTranslation } from "react-i18next";
 import styles from "./programs-detailed-summary.css";
 
-export default function ProgramsLevelTwo(props: ProgramsCardProps) {
+export default function ProgramsDetailedSummary(props: ProgramsCardProps) {
   const [patientPrograms, setPatientPrograms] = React.useState(null);
   const [
     isLoadingPatient,
