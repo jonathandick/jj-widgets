@@ -10,13 +10,8 @@ export default function SummaryCard(props: SummaryCardProps) {
     <div style={props.styles} className={`omrs-card ${styles.card}`}>
       <div className={styles.header}>
         <div className={styles.headerTitle}>
-          {props.link ? (
-            <Link to={props.link} className={`omrs-unstyled`}>
-              {contents()}
-            </Link>
-          ) : (
-            <>{contents()}</>
-          )}
+        <>{contents()}</>
+          
         </div>
         <div className={styles.headerAdd}>
           <button className={`omrs-unstyled ${styles.addBtn}`}>Add</button>
@@ -47,3 +42,15 @@ type SummaryCardProps = {
 };
 
 type Styles = {};
+
+/*
+        
+          {props.link ? (
+            <Link to={props.link} className={`omrs-unstyled`}>
+              {contents()}
+            </Link>
+          ) : (
+            <>{contents()}</>
+          )}
+
+          */

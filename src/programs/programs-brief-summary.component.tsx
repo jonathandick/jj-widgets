@@ -10,6 +10,8 @@ import HorizontalLabelValue from "../cards/horizontal-label-value.component";
 import { useCurrentPatient } from "@openmrs/esm-api";
 import SummaryCardFooter from "../cards/summary-card-footer.component";
 import { Trans, useTranslation } from "react-i18next";
+import { BrowserRouter, Route} from "react-router-dom";
+import ProgramsDetailedSummary from "./programs-detailed-summary.component"
 
 export default function ProgramsBriefSummary(props: ProgramsBriefSummaryProps) {
   const [patientPrograms, setPatientPrograms] = React.useState(null);
@@ -32,7 +34,9 @@ export default function ProgramsBriefSummary(props: ProgramsBriefSummaryProps) {
     }
   }, [patientUuid]);
 
-  return (
+  return (    
+    <>  
+
     <SummaryCard
       name={t("care programs", "Care Programs")}
       match={props.match}
@@ -70,6 +74,7 @@ export default function ProgramsBriefSummary(props: ProgramsBriefSummaryProps) {
         })}
       <SummaryCardFooter linkTo={`/patient/${patientUuid}/chart/programs`} />
     </SummaryCard>
+    </>
   );
 }
 

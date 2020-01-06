@@ -1,5 +1,5 @@
 import React from "react";
-import { match, Link } from "react-router-dom";
+import { match, Link, BrowserRouter } from "react-router-dom";
 import styles from "./summary-card-footer.css";
 
 export default function SummaryCardFooter(props: SummaryCardFooterProps) {
@@ -11,6 +11,7 @@ export default function SummaryCardFooter(props: SummaryCardFooterProps) {
     );
   }
   return (
+    <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
     <div className={`${styles.footer}`}>
       <svg className="omrs-icon" fill="var(--omrs-color-ink-medium-contrast)">
         <use xlinkHref="#omrs-icon-chevron-right" />
@@ -23,6 +24,7 @@ export default function SummaryCardFooter(props: SummaryCardFooterProps) {
         <p className="omrs-bold">See all</p>
       </Link>
     </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,16 +1,17 @@
 import React from "react";
-import { match, Route } from "react-router";
+import { match, } from "react-router";
+import { BrowserRouter, Route} from "react-router-dom";
 import ProgramsDetailedSummary from "./programs-detailed-summary.component";
 
-export default function ProgramsRoutes(props: ProgramsRoutesProps) {
-  return (
-      <Route
-        exact
-        path="/patient/:patientUuid/chart/programs"
-        component={ProgramsDetailedSummary}
-      />
-  );
-}
+export const routes = 
+[
+  {
+        path : "/patient/:patientUuid/chart/programs",
+        component : ProgramsDetailedSummary
+  }
+]
+
+
 
 type ProgramsRoutesProps = {
   match: match;
