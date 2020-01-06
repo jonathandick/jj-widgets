@@ -7,7 +7,7 @@ import ProgramsDetailedSummary from "./programs-detailed-summary.component";
 
 export const programsWidget = {
     root: ProgramsBriefSummary,
-    routes: <BrowserRouter><Route exact path="/patient/:patientUuid/chart/programs" component={ProgramsDetailedSummary}/></BrowserRouter>,
+    routes: <Route exact path="/patient/:patientUuid/chart/programs" component={ProgramsDetailedSummary}/>,
     routeParams: [
         {
             path : "/patient/:patientUuid/chart/programs",
