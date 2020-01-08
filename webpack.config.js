@@ -51,6 +51,7 @@ module.exports = env => ({
   externals: [
     "react",
     "react-dom",
+    "react-router",
     /^@openmrs\/esm/,
     "i18next",
     "react-i18next"

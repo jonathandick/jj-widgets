@@ -11,7 +11,6 @@ export default function SummaryCardFooter(props: SummaryCardFooterProps) {
     );
   }
   return (
-    <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
     <div className={`${styles.footer}`}>
       <svg className="omrs-icon" fill="var(--omrs-color-ink-medium-contrast)">
         <use xlinkHref="#omrs-icon-chevron-right" />
@@ -24,7 +23,6 @@ export default function SummaryCardFooter(props: SummaryCardFooterProps) {
         <p className="omrs-bold">See all</p>
       </Link>
     </div>
-    </BrowserRouter>
   );
 }
 
