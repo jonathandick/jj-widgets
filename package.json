@@ -79,6 +79,7 @@
   "dependencies": {
     "@openmrs/esm-api": "^1.2.1",
     "i18next": "^19.0.1",
+    "openmrs-esm-patient-chart-widgets": "^1.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-i18next": "^11.2.2"
