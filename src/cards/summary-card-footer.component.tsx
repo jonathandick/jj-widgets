@@ -1,6 +1,29 @@
 import React from "react";
-import { match, Link, BrowserRouter } from "react-router-dom";
 import styles from "./summary-card-footer.css";
+
+export default function SummaryCardFooter(props: SummaryCardFooterProps) {
+  if (!props.linkTo) {
+    return (
+      <div className={styles.footer}>
+        <p className="omrs-bold">See all</p>
+      </div>
+    );
+  }
+  return (
+    <div className={`${styles.footer}`}>
+      <svg className="omrs-icon" fill="var(--omrs-color-ink-medium-contrast)">
+        <use xlinkHref="#omrs-icon-chevron-right" />
+      </svg>
+        <p className="omrs-bold">See all</p>
+    </div>
+  );
+}
+
+type SummaryCardFooterProps = {
+  linkTo?: string;
+};
+
+/*
 
 export default function SummaryCardFooter(props: SummaryCardFooterProps) {
   if (!props.linkTo) {
@@ -25,7 +48,4 @@ export default function SummaryCardFooter(props: SummaryCardFooterProps) {
     </div>
   );
 }
-
-type SummaryCardFooterProps = {
-  linkTo?: string;
-};
+*/

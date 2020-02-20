@@ -3,14 +3,12 @@ import dayjs from "dayjs";
 import SummaryCard from "../cards/summary-card.component";
 import SummaryCardRow from "../cards/summary-card-row.component";
 import SummaryCardRowContent from "../cards/summary-card-row-content.component";
-import { match } from "react-router";
 import { fetchPatientPrograms } from "./programs.resource";
 import { createErrorHandler } from "@openmrs/esm-error-handling";
 import HorizontalLabelValue from "../cards/horizontal-label-value.component";
 import { useCurrentPatient } from "@openmrs/esm-api";
 import SummaryCardFooter from "../cards/summary-card-footer.component";
 import { Trans, useTranslation } from "react-i18next";
-import { BrowserRouter, Route} from "react-router-dom";
 import ProgramsDetailedSummary from "./programs-detailed-summary.component"
 
 export default function ProgramsBriefSummary(props: ProgramsBriefSummaryProps) {
@@ -34,50 +32,53 @@ export default function ProgramsBriefSummary(props: ProgramsBriefSummaryProps) {
     }
   }, [patientUuid]);
 
-  return (    
-    <>  
+  
+  function Foo(props) {
+    return (    
+      <SummaryCard
+        name={t("care programs", "Care Programs")}
+        match={props.match}
+        link={`/patient/${patientUuid}/chart/programs?tab=Programs`}
+        styles={{ margin: "1.25rem, 1.5rem" }}
+      >
+        <SummaryCardRow>
+          <SummaryCardRowContent>
+            <HorizontalLabelValue
+              label={t("Active Programs", "Active Programs")}
+              labelStyles={{
+                color: "var(--omrs-color-ink-medium-contrast)",
+                fontFamily: "Work Sans"
+              }}
+              value={t("Since", "Since")}
+              valueStyles={{
+                color: "var(--omrs-color-ink-medium-contrast)",
+                fontFamily: "Work Sans"
+              }}
+            />
+          </SummaryCardRowContent>
+        </SummaryCardRow>
+        {patientPrograms &&
+          patientPrograms.map(program => {
+            return (
+              <SummaryCardRow key={program.uuid} linkTo="">
+                <HorizontalLabelValue
+                  label={program.display}
+                  labelStyles={{ fontWeight: 500 }}
+                  value={dayjs(program.dateEnrolled).format("MMM-YYYY")}
+                  valueStyles={{ fontFamily: "Work Sans" }}
+                />
+              </SummaryCardRow>
+            );
+          })}
+        <SummaryCardFooter linkTo={`/patient/${patientUuid}/chart/programs-test`} />
+      </SummaryCard>
+    )
+  }
 
-    <SummaryCard
-      name={t("care programs", "Care Programs")}
-      match={props.match}
-      link={`/patient/${patientUuid}/chart/programs`}
-      styles={{ margin: "1.25rem, 1.5rem" }}
-    >
-      <SummaryCardRow>
-        <SummaryCardRowContent>
-          <HorizontalLabelValue
-            label={t("Active Programs", "Active Programs")}
-            labelStyles={{
-              color: "var(--omrs-color-ink-medium-contrast)",
-              fontFamily: "Work Sans"
-            }}
-            value={t("Since", "Since")}
-            valueStyles={{
-              color: "var(--omrs-color-ink-medium-contrast)",
-              fontFamily: "Work Sans"
-            }}
-          />
-        </SummaryCardRowContent>
-      </SummaryCardRow>
-      {patientPrograms &&
-        patientPrograms.map(program => {
-          return (
-            <SummaryCardRow key={program.uuid} linkTo="">
-              <HorizontalLabelValue
-                label={program.display}
-                labelStyles={{ fontWeight: 500 }}
-                value={dayjs(program.dateEnrolled).format("MMM-YYYY")}
-                valueStyles={{ fontFamily: "Work Sans" }}
-              />
-            </SummaryCardRow>
-          );
-        })}
-      <SummaryCardFooter linkTo={`/patient/${patientUuid}/chart/programs`} />
-    </SummaryCard>
-    </>
+  return (
+      <Foo/>
   );
 }
 
 type ProgramsBriefSummaryProps = {
-  match: match;
 };

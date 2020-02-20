@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import SummaryCard from "../cards/summary-card.component";
 import SummaryCardRow from "../cards/summary-card-row.component";
 import SummaryCardRowContent from "../cards/summary-card-row-content.component";
-import { match } from "react-router";
+import { useRouteMatch } from "react-router";
 import { fetchPatientPrograms } from "./programs.resource";
 import { createErrorHandler } from "@openmrs/esm-error-handling";
 import HorizontalLabelValue from "../cards/horizontal-label-value.component";
@@ -21,6 +21,8 @@ export default function ProgramsDetailedSummary(props: ProgramsCardProps) {
   ] = useCurrentPatient();
   const { t } = useTranslation();
 
+  const match = useRouteMatch();
+
   React.useEffect(() => {
     const subscription = fetchPatientPrograms(patientUuid).subscribe(
       programs => setPatientPrograms(programs),
@@ -34,7 +36,7 @@ export default function ProgramsDetailedSummary(props: ProgramsCardProps) {
     <div className={styles.programsLevelTwo}>
       <SummaryCard
         name="Care Programs"
-        match={props.match}
+        match={match}
         styles={{
           flex: 1,
           padding: ".5rem",
@@ -77,5 +79,4 @@ export default function ProgramsDetailedSummary(props: ProgramsCardProps) {
 }
 
 type ProgramsCardProps = {
-  match: match;
 };

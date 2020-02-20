@@ -1,11 +1,17 @@
 import React from "react";
-import { match } from "react-router";
-import { BrowserRouter, Route} from "react-router-dom";
 import ProgramsBriefSummary from "./programs-brief-summary.component";
-import ProgramsRoutes from "./programs-routes";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 
-export const programsWidget = {
-    root: ProgramsBriefSummary,
-    routes: ProgramsRoutes
+export function ProgramsWidget(props) {
+    return (
+        <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
+            <ProgramsBriefSummary/>
+            <Link to="hello/world">Hello</Link>
+            <Route exact path="/patient/:patientUuid/chart/hello/world">
+                <div>Hello world!</div> 
+            </Route>
+        </BrowserRouter>
+    )
 }
+ 

@@ -1,8 +1,10 @@
 import "./set-public-path";
 
-import { programsWidget } from "./programs/programs-widget";
+import { ProgramsWidget } from "./programs/programs-widget";
 
+export const name = "@jj-widgets";
 export const widgets = {
-  "programsWidget" : programsWidget
+  "hello" : ProgramsWidget
 };
+
 
