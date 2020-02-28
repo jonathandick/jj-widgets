@@ -53,7 +53,8 @@ module.exports = env => ({
     "react-dom",
     /^@openmrs\/esm/,
     "i18next",
-    "react-i18next"
+    "react-i18next",
+    "openmrs-esm-patient-chart-widgets"
   ],
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
